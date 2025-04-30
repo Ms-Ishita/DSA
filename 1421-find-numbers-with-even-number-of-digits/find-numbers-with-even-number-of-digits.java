@@ -4,15 +4,15 @@ class Solution {
        for(int i = 0; i<nums.length; i++){
         int count = 0;
         int num = nums[i];
-        if(num==0){
-            count =1;
-        }
-        else{
+        // if(num==0){
+        //     count =1;
+        // }
+        
             while(num!=0){
                 num = num/10;
                 count++;
             }
-        }
+        
         digit[i] = count;
         
        }
