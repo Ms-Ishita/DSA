@@ -6,14 +6,10 @@ class Solution {
                 map.put(nums[i], 1);
             }
             else{
-                map.put(nums[i], map.get(nums[i])+1);
-            }
-        }
-        for(int keys : map.keySet()){
-            if(map.get(keys)>1){
                 return true;
             }
         }
+      
         return false;
     }
 }
