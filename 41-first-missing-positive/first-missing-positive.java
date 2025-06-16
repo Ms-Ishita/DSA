@@ -6,11 +6,11 @@ class Solution {
                 set.add(nums[i]);  
             }
         }
-        int i=1;
-        while(set.contains(i)){
-            
-            i++;
+        for(int i =1; i<=nums.length+1; i++){
+            if(!set.contains(i)){
+                return i;
+            }
         }
-        return i;
+        return nums.length+1;
     }
 }
