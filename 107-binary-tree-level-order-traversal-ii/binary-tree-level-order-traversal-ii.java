@@ -29,10 +29,11 @@ class Solution {
                 if(curr.left!=null)q.offer(curr.left);
                 if(curr.right!=null)q.offer(curr.right);
             }
-            l1.add(0,currlevel);
+            l1.add(currlevel);
             
 
         }
+        Collections.reverse(l1);
         return l1;
     }
 }
