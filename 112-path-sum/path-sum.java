@@ -18,7 +18,7 @@ class Solution {
         if(root==null)return false;
     
         sum+=root.val;
-        if(root.left == null && root.right==null)if(sum==targetSum)return true;
+        if(root.left == null && root.right==null&&sum==targetSum)return true;
         
         return calSum(root.left,sum, targetSum)|| calSum(root.right, sum, targetSum);
          
