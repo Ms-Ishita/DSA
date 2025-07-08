@@ -1,20 +1,20 @@
+import java.util.*;
 class Solution {
     public int longestOnes(int[] nums, int k) {
-       int left = 0;
-       int max_length=0;
-       int zero_count=0;
-       for(int  right = 0; right<nums.length; right++){
-        if(nums[right]==0){
-            zero_count++;
-        }
-        while(zero_count>k){
-            if(nums[left]==0){
-                zero_count--;
+        int left = 0;
+        int count =0;
+        int maxlength = 0;
+        int max =0;
+        Queue<Integer> q = new LinkedList<>();
+        for(int right =0; right<nums.length; right++){
+           if(nums[right]==0){
+            count++;
+            q.add(right);
             }
-            left++;
+            if(q.size()>k)left=q.poll()+1;   
+            maxlength = right-left+1;
+            max=(max<maxlength)?maxlength:max;  
         }
-        max_length=Math.max(max_length, right-left+1);
-       }
-       return max_length;
+        return max; 
     }
 }
