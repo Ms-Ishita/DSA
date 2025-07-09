@@ -1,41 +1,29 @@
 class Solution {
     public int maxNumberOfBalloons(String text) {
-       
-       int[] arr = new int[5];
-       for(int i = 0; i<text.length(); i++){
-        if(text.charAt(i)=='b'){
-            arr[0]++;
+        int min = Integer.MAX_VALUE;
+        Map<Character, Integer> map = new HashMap<>();
+            map.put('b', 0);
+            map.put('a',0);
+            map.put('n', 0);
+        for(int i =0 ;i<text.length(); i++){
+        
+            char ch = text.charAt(i);
+            if(ch=='b' || ch=='a' || ch=='l' || ch=='o' || ch=='n'){
+                if(!map.containsKey(ch)){
+                    map.put(ch, 1);
+                }
+                else map.put(ch, map.get(ch)+1);
 
+            }
         }
-        if(text.charAt(i)=='a'){
-            arr[1]++;
-        }
-        if(text.charAt(i)=='l'){
-            arr[2]++;
+            if(map.containsKey('l'))map.put('l', map.get('l')/2);
+            else map.put('l', 0);
+            if(map.containsKey('o'))map.put('o', map.get('o')/2);
+            else map.put('o', 0);
+        for(char key : map.keySet()){
+            min =Math.min(min, map.get(key));
             
         }
-        if(text.charAt(i)=='o'){
-            arr[3]++;
-           
-        }
-        if(text.charAt(i)=='n'){
-            arr[4]++;
-        }
-
-       }
-
-
-    
-    arr[2]=(arr[2])/2;arr[3]=(arr[3])/2;
-
-    int min = arr[0];for(
-    int i = 0;i<arr.length;i++){
-        if(min>arr[i]){
-            min = arr[i];
-        }
+        return min;    
     }
-
-    return min;
-    }
-
 }
