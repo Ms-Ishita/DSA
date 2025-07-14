@@ -10,16 +10,16 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
-        Stack<Integer> st = new Stack<>();
+        Stack<ListNode> st = new Stack<>();
         ListNode curr = head;
         while(curr !=null){
-            st.push(curr.val);
+            st.push(curr);
             curr = curr.next;    
         }
         int decimal = 0;
         int base = 1;
         while(!st.isEmpty()){
-           decimal +=st.pop()*base;
+           decimal +=(st.pop().val)*base;
            base*=2;   
         }
         return decimal;
