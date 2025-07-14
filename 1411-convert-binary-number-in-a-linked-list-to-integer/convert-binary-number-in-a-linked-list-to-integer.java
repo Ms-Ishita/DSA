@@ -12,19 +12,15 @@ class Solution {
     public int getDecimalValue(ListNode head) {
         Stack<Integer> st = new Stack<>();
         ListNode curr = head;
-
         while(curr !=null){
             st.push(curr.val);
-            curr = curr.next;
-
-            
+            curr = curr.next;    
         }
         int decimal = 0;
         int base = 1;
         while(!st.isEmpty()){
-           decimal = decimal+st.pop()*base;
-           base = base *2;
-           
+           decimal +=st.pop()*base;
+           base*=2;   
         }
         return decimal;
     }
