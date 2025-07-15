@@ -17,7 +17,7 @@ class Solution {
             }
 
         }
-        return start ;
+        return start;
         
     }
 }
