@@ -1,31 +1,27 @@
 class Solution {
-    public int longestBalanced(String s){
-        
-          int n = s.length();
-        int ans = 0;
-
-        for (int i = 0; i < n; i++) {
+    public boolean isValid(int[] freq){
+        int common = 0;
+        for(int i =0; i<freq.length; i++){
+            if(freq[i]==0)continue;
+            if(common==0){
+                common = freq[i];
+            }
+            else if(common!=freq[i])return false;
+        }
+        return true;
+    }
+    public int longestBalanced(String s) {
+        int max = 0;
+        for(int i =0; i<s.length(); i++){
+            // This freq array where we add freq of String s
             int[] freq = new int[26];
-
-            for (int j = i; j < n; j++) {
-                freq[s.charAt(j) - 'a']++;
-
-                int min = Integer.MAX_VALUE;
-                int max = 0;
-
-                for (int f : freq) {
-                    if (f > 0) {
-                        min = Math.min(min, f);
-                        max = Math.max(max, f);
-                    }
-                }
-
-                if (min == max) {
-                    ans = Math.max(ans, j - i + 1);
+            for(int j =i; j<s.length(); j++){
+                freq[s.charAt(j)-'a']++;
+                if(isValid(freq)){
+                    max = Math.max(max, j-i+1);
                 }
             }
         }
-        return ans;
-
+        return max;
     }
 }
