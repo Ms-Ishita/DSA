@@ -1,41 +1,48 @@
 class Solution {
+    public int searchFirst(int[] arr, int target){
+        int start = 0;
+        int end = arr.length-1;
+        int ans = -1;
+        while(start<=end){
+            int mid = start+(end - start)/2;
+            if(arr[mid] == target){
+                ans = mid;
+                end = mid-1;
+
+            }
+            else if(arr[mid]<target){
+                start = mid+1;
+                
+            }
+            else end = mid-1;
+        }
+        return ans;
+
+    }
+    public int searchLast(int[] arr, int target){
+        int start = 0;
+        int end = arr.length-1;
+        int ans = -1;
+        while(start<=end){
+            int mid = start+(end - start)/2;
+            if(arr[mid] == target){
+                ans = mid;
+                start= mid+1;
+            }
+            else if(arr[mid]<=target){
+                start= mid+1;
+            }
+            else end = mid-1;
+
+
+        }
+        return ans ;
+    }
     public int[] searchRange(int[] nums, int target) {
-        int[] result = new int[2];
-        result[0] = findStartingIndex(nums, target);
-        result[1] = findEndingIndex(nums, target);
-        return result;
-    }
-
-    private int findStartingIndex(int[] nums, int target) {
-        int s = 0, e = nums.length - 1, ans = -1;
-        while (s <= e) {
-            int mid = s + (e - s) / 2;
-            if (nums[mid] == target) {
-                ans = mid;
-                e = mid - 1; // Move left to find the first occurrence
-            } else if (nums[mid] < target) {
-                s = mid + 1; // Move right
-            } else {
-                e = mid - 1; // Move left
-            }
-        }
-        return ans;
-    }
-
-    private int findEndingIndex(int[] nums, int target) {
-        int s = 0, e = nums.length - 1, ans = -1;
-        while (s <= e) {
-            int mid = s + (e - s) / 2;
-            if (nums[mid] == target) {
-                ans = mid;
-                s = mid + 1; // Move right to find the last occurrence
-            } else if (nums[mid] < target) {
-                s = mid + 1; // Move right
-            } else {
-                e = mid - 1; // Move left
-            }
-        }
-        return ans;
+        int result = searchFirst(nums, target);
+        int result1 = searchLast(nums, target);
+        return new int[] {result, result1};
+        
+        
     }
 }
-
