@@ -6,13 +6,12 @@ class Solution {
         int minLen = Integer.MAX_VALUE;
         while(right<nums.length){
             sum+=nums[right];
-            
-            if(sum>=target){
+
+            while(sum>=target){
                 minLen = Math.min(minLen,right- left+1);
+                sum-=nums[left];
                 left++;
-                right= left;
-                sum =0;
-                continue;
+                
             }
             right++;
         }
