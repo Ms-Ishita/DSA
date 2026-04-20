@@ -59,9 +59,9 @@ class Solution {
             this.i = i;
             this.j = j;
         }
-        public String toString(){
-            return ""+i+" "+j;
-        }
+        // public String toString(){
+        //     return ""+i+" "+j;
+        // }
         }
         int fresh =0;
         int steps =0;
@@ -78,11 +78,11 @@ class Solution {
                 }
             }
         }
-        System.out.println(fresh);
+        //System.out.println(fresh);
         if(fresh==0)return 0;
         q.offer(null);
         while(!q.isEmpty()){
-            System.out.println(q);
+            //System.out.println(q);
             Node curr = q.poll();
             if(curr==null){
             if(q.isEmpty())break;
