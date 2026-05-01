@@ -1,3 +1,4 @@
+
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         Map<Character,Integer> map = new HashMap<>();
@@ -5,7 +6,6 @@ class Solution {
         int right=0;
         int max = 0;
         while(right<s.length()){
-           // System.out.println("Oldleft- "+left+" Oldright- "+ right);
             if(!map.containsKey(s.charAt(right))){
                 map.put(s.charAt(right), right);
             }
@@ -13,15 +13,10 @@ class Solution {
                 if(map.get(s.charAt(right))<left);
                 else left = map.get(s.charAt(right))+1;
                 map.put(s.charAt(right), right);
-                
             }
-            //System.out.println(map);
-            //System.out.println(max);
-            max = (int)Math.max(max, (right-left)+1); 
-            
+            max =Math.max(max, (right-left)+1); 
 
             right++;
-            //System.out.println("left- "+left+" right- "+ right);
         }
         return max;
 
