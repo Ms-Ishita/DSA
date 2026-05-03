@@ -22,10 +22,10 @@ class Solution {
         
         while(!q.isEmpty()){
            
-                TreeNode curr = q.poll();
-                ans = curr.val;
-                if(curr.right!=null)q.offer(curr.right);
-                if(curr.left!=null)q.offer(curr.left);
+            TreeNode curr = q.poll();
+            ans = curr.val;
+            if(curr.right!=null)q.offer(curr.right);
+            if(curr.left!=null)q.offer(curr.left);
         }
 
 
