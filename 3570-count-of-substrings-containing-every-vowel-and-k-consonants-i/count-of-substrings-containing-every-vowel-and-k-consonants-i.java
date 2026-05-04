@@ -1,7 +1,7 @@
 class Solution {
-    public boolean countVowels(char ch){
-        return ch=='a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'   ; 
-    }
+    // public boolean countVowels(char ch){
+    //     return ch=='a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'   ; 
+    // }
     public int countOfSubstrings(String word, int k) {
         int n = word.length();
         int count = 0;
@@ -10,13 +10,13 @@ class Solution {
             int[] vowels = new int[5];
             for(int right = left; right<n; right++){
                 char ch = word.charAt(right);
-                if(countVowels(ch)){
+                //if(countVowels(ch)){
                     if(ch == 'a')vowels[0]++;
                     else if(ch == 'e')vowels[1]++;
                     else if(ch == 'i')vowels[2]++;
                     else if(ch == 'o')vowels[3]++;
-                    else vowels[4]++;
-                }
+                    else if(ch == 'u')vowels[4]++;
+                //}
                 else {
                     consonent++;
                 }
