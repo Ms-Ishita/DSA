@@ -5,7 +5,7 @@ class Solution {
         int right = 0;
         while(right<=chars.length){
           
-            if(right==chars.length || chars[left]!=chars[right]){
+            if(right==chars.length || right<chars.length && chars[left]!=chars[right]){
                 sb.append(chars[left]);
                 if(right-left>1){
                     sb.append(right-left);
