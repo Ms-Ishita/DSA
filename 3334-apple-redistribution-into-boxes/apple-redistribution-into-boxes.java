@@ -11,7 +11,7 @@ class Solution {
         for(int i=capacity.length-1; i>=0; i--){
             total_capacity+=capacity[i];
             count++;
-            System.out.print(total_capacity+" ");
+            //System.out.print(total_capacity+" ");
             if(total_capacity>=totalNoOfApples)return count;
             
             
