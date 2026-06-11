@@ -1,19 +1,19 @@
 class Solution {
-    int max = 0;
-    public void recursion(String s, int left, int right, HashSet<Character> set){
-        if(right >=s.length())return;
-        char ch = s.charAt(right);
-        while(set.contains(ch)){
-            set.remove(s.charAt(left));
-            left++;
-        }
-        set.add(ch);
-        max = Math.max(max, (right-left)+1);
-        recursion(s,left, right+1, set);
-    }
     public int lengthOfLongestSubstring(String s) {
-        recursion(s, 0, 0, new HashSet<>());
-        return max;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0;
+        int maxLen = 0;
+        for(int right=0; right<s.length(); right++){
+           if(!map.containsKey(s.charAt(right)))map.put(s.charAt(right), right);
+           else {
+            if(map.get(s.charAt(right))<left);
+            else left = map.get(s.charAt(right))+1;
+              map.put(s.charAt(right), right);
+           }
+           maxLen= Math.max(right-left+1, maxLen);
+
+        }
+        return maxLen;
         
     }
 }
