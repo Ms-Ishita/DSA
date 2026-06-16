@@ -11,21 +11,20 @@
 class Solution {
     public void reorderList(ListNode head) {
         Stack<ListNode> st = new Stack<>();
-        ListNode dummy = new ListNode(-1);
-        ListNode curr = dummy;
         ListNode temp = head;
         while(temp!=null){
             st.push(temp);
             temp = temp.next;
         }
-        temp = head;
         int size = st.size();
+        temp = head;
         for(int i =0; i<size/2; i++){
-            ListNode last = st.pop();
-            ListNode front = temp.next;
-            temp.next = last;
-            last.next = front;
-            temp = front;
+           ListNode top = st.pop();
+           ListNode nextNode = temp.next;
+           temp.next = top;
+           top.next = nextNode;
+           temp = nextNode; 
+
         }
         temp.next = null;
         
