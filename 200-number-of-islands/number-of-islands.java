@@ -8,6 +8,7 @@ class Solution {
         dfs(grid, i, j-1, visited);
     }
     public int numIslands(char[][] grid){
+        if (grid == null || grid.length == 0) return 0;
         boolean[][] visited = new boolean[grid.length][grid[0].length];
         int count = 0;
         for(int i =0; i<grid.length; i++){
