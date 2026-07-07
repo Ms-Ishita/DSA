@@ -1,38 +1,38 @@
 class Solution {
-    public boolean isPath(List<List<Integer>> adj,int src,int dest, boolean[] visited){
-        Queue<Integer> q = new LinkedList<>();
-        q.offer(src);
-        visited[src]= true;
-        while(!q.isEmpty()){
-            int curr = q.poll();
-            if(curr==dest)return true;
-            for(int i=0;i<adj.get(curr).size(); i++){
-                int next = adj.get(curr).get(i);
-                if(!visited[next]){
-                    visited[next]=true;
-                    q.offer(next);
-                }
-            }
+    int[] parent;
+    int[] rank;
+    public int find(int i){
+        if(i==parent[i])return i;
+        return parent[i]=find(parent[i]);
+    }
+    public void union(int a, int b){
+        int parA = find(a);
+        int parB = find(b);
+        if(parA==parB)return;
+        if(rank[parA]>rank[parB]){
+            parent[parB] = parA;
         }
-        return false;
+        else if(rank[parB]>rank[parB])parent[parA]=parB;
+        else {
+            parent[parB] = parA;
+            rank[parA]++;
+        } 
+
     }
     public int[] findRedundantConnection(int[][] edges) {
-        List<List<Integer>> adj = new ArrayList<>();
-        for(int i =0; i<edges.length+1; i++){
-            adj.add(new ArrayList<>());
+        int n = edges.length+1;
+        parent = new int[n];
+        rank = new int[n];
+        for(int i =0;i<n; i++){
+            parent [i] = i;
         }
-        for(int i =0; i<edges.length; i++){
+        for(int i =0; i<n; i++){
             int u = edges[i][0];
             int v = edges[i][1];
-            boolean[] visited = new boolean[edges.length+1];
-            if(isPath(adj,u,v,visited)){
-                return new int[]{u,v};
-            }
-            adj.get(u).add(v);
-            adj.get(v).add(u);
+            if(find(u)==find(v))return new int[]{u,v};
+            union(u,v);
+
         }
         return new int[]{};
-      
-        
     }
 }
