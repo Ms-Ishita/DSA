@@ -1,11 +1,17 @@
 class Solution {
     public boolean isPath(List<List<Integer>> adj,int src,int dest, boolean[] visited){
-        if(src == dest)return true;
-        visited[src] = true;
-        for(int i =0; i<adj.get(src).size(); i++){
-            int next = adj.get(src).get(i);
-            if(!visited[next]){
-                if(isPath(adj,next,dest,visited))return true;
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(src);
+        visited[src]= true;
+        while(!q.isEmpty()){
+            int curr = q.poll();
+            if(curr==dest)return true;
+            for(int i=0;i<adj.get(curr).size(); i++){
+                int next = adj.get(curr).get(i);
+                if(!visited[next]){
+                    visited[next]=true;
+                    q.offer(next);
+                }
             }
         }
         return false;
