@@ -9,7 +9,7 @@ class Solution {
         for(int i =0; i<nums.length; i++){
             int count = 1;
             int curr = nums[i];
-            if(map.get(curr)==true)continue;
+            //if(map.get(curr)==true)continue;
             while(map.containsKey(curr+1)&& map.get(curr+1)==false){
                 count++;
                 curr++;
