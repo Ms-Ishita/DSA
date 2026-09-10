@@ -1,26 +1,23 @@
 class Solution {
     class Pair{
-        int day;
+        int val;
         int index;
-        Pair(int day, int index){
-            this.day = day;
-            this.index = index;
+        Pair(int val, int index){
+            this.val= val;
+            this.index= index;
         }
     }
-    public int[] dailyTemperatures(int[] temperatures) {
+    public int[] dailyTemperatures(int[] temp) {
         Stack<Pair> st = new Stack<>();
-        int[] answer = new int[temperatures.length];
-        for(int i=temperatures.length-1;i>=0; i--){
-            while(!st.isEmpty() && (st.peek().day<=temperatures[i])){
-                st.pop();
+        int[] ans = new int[temp.length];
+        for(int i =0; i<temp.length; i++){
+            while(!st.isEmpty() &&  temp[i]>st.peek().val){
+                Pair curr = st.pop();
+                ans[curr.index] = i - curr.index;
             }
-            if(!st.isEmpty()){
-              
-                answer[i] = (st.peek().index-i);
-            }
-            st.push(new Pair(temperatures[i], i));
-
+            st.push(new Pair(temp[i], i));
         }
-        return answer;
+        return ans;
+        
     }
 }
