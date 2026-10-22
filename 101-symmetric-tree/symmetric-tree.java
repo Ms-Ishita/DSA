@@ -14,16 +14,14 @@
  * }
  */
 class Solution {
-    public boolean isSame(TreeNode root1, TreeNode root2){
-        if(root1== null && root2 == null)return true;
-        if(root1 == null || root2 == null)return false;
-        if(root1.val==root2.val)
-        return isSame(root1.left, root2.right)&& isSame(root2.left, root1.right);
-        return false;
+    public boolean identify(TreeNode p, TreeNode q){
+        if(p == null && q ==  null)return true;
+        if(p == null || q == null || p.val!=q.val)return false;
+        return identify(p.left,q.right) && identify(q.left,p.right);
     }
     public boolean isSymmetric(TreeNode root) {
-        if(root==null)return true;
-        return isSame(root.left, root.right);
+        if(root == null)return true;
+        return identify(root.left, root.right);
         
     }
 }
